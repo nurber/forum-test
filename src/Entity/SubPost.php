@@ -28,7 +28,7 @@ class SubPost
     private $date;
 
     /**
-     * @ORM\Column(type="string", length=4096)
+     * @ORM\Column(type="text")
      */
     private $text;
 

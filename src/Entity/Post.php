@@ -35,16 +35,9 @@ class Post
     private $title;
 
     /**
-     * @ORM\Column(type="string", length=4096)
+     * @ORM\Column(type="text")
      */
     private $text;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Post", inversedBy="subpost")
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $post;
-
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\SubPost", mappedBy="post", orphanRemoval=true)
@@ -93,18 +86,6 @@ class Post
     public function setText(string $text): self
     {
         $this->text = $text;
-
-        return $this;
-    }
-
-    public function getPost(): ?self
-    {
-        return $this->post;
-    }
-
-    public function setPost(?self $post): self
-    {
-        $this->post = $post;
 
         return $this;
     }
