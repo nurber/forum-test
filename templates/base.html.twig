@@ -39,7 +39,14 @@
     </div>
 </nav>
 
+<div class="container pt-4">
+    <div class="row">
+        <div class="col">
+            {% block content %}{% endblock %}
+        </div>
+    </div>
 
+</div>
 
 {% block javascripts %}
     <script src="{{ asset('vendor/popper/js/popper.min.js') }}"></script>

@@ -26,6 +26,13 @@ class PostFixtures extends Fixture implements DependentFixtureInterface
         return new \DateTime(date('Y-m-d H:i:s', $rand_epoch));
     }
 
+    function getRandomWord($str) {
+        $words = str_word_count($str, 1);
+        shuffle($words);
+        return implode (" ", array_slice($words, 0, 10));
+
+    }
+
 
     public function load(ObjectManager $manager)
     {
@@ -47,7 +54,7 @@ class PostFixtures extends Fixture implements DependentFixtureInterface
             $post = new Post();
             $post
                 ->setText($content)
-                ->setTitle('lorem')
+                ->setTitle($this->getRandomWord($content))
                 ->setDate($this->getRandomDate())
                 ->setUser($this->getRandomUser());
             $manager->persist($post);

@@ -1,7 +1,25 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello IndexController!{% endblock %}
+{% block title %}Форум{% endblock %}
 
-{% block body %}
+{% block content %}
+    <div class="row">
+        <div class="col-10">
+            {% for post in posts %}
+
+                <div class="pb-4">
+                    <div>
+                        <b>{{ post.title }}</b>
+                    </div>
+                    <div>
+                        {{ post.user.username }}
+                    </div>
+                </div>
+
+            {% endfor %}
+
+
+        </div>
+    </div>
 
 {% endblock %}

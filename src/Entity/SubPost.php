@@ -18,7 +18,7 @@ class SubPost
 
     /**
      * @var User
-     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="SubPost")
+     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="subposts")
      */
     private $user;
 
