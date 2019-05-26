@@ -116,4 +116,9 @@ class Post
     {
         return $this->title;
     }
+
+    public function getSubPostsCount()
+    {
+        return $this->subPosts->count();
+    }
 }

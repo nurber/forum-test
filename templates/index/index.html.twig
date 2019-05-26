@@ -12,7 +12,10 @@
                         <b>{{ post.title }}</b>
                     </div>
                     <div>
-                        {{ post.user.username }}
+                       <b>Автор:</b> {{ post.user.username }}
+                    </div>
+                    <div>
+                        <b>Ответов:</b> {{ post.getSubPostsCount }}
                     </div>
                 </div>
 
