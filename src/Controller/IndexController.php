@@ -15,7 +15,7 @@ class IndexController extends AbstractController
      */
     public function index(PostRepository $postRepository)
     {
-        $posts = $postRepository->findAll();
+        $posts = $postRepository->findPostOrderedByDate();
         return $this->render('index/index.html.twig', [
             'posts' => $posts
         ]);

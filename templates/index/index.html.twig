@@ -13,7 +13,8 @@
                            href="{{ path('app_show_post',{'id': post.id}) }}">{{ post.title }}</a>
                     </div>
                     <div>
-                       <b>{{ post.user.username }}</b> / ответов: <b>{{ post.getSubPostsCount }}</b>
+                       <b>{{ post.user.username }}</b> / ответов: <b>{{ post.getSubPostsCount }}</b> /
+                        {{ post.date|date('d') }} {{ mnths[post.date|date("n")] }} {{ post.date|date('Y') }}  {{ post.date|date('H:i') }}
                     </div>
                 </div>
 
