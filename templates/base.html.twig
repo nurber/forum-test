@@ -25,6 +25,9 @@
             </li>
             {% if is_granted("ROLE_USER") %}
                 <li class="nav-item">
+                    <a id="app_logout" class="nav-link" href="{{ path('app_create_post') }}">Создать тему</a>
+                </li>
+                <li class="nav-item">
                     <a id="app_logout" class="nav-link" href="{{ path('fos_user_security_logout') }}">Выйти</a>
                 </li>
             {% else %}
