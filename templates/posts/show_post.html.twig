@@ -4,32 +4,39 @@
 
 {% block content %}
     <div class="row">
-        <div class="col-10">
-            <h5> {{ single_post.title }}</h5>
-            <div>
-                <b>{{ single_post.user.username }}</b>
-                {{ single_post.date | date() }}
-            </div>
-            <div>
-                {{ single_post.text | raw }}
-            </div>
-            {% for sub_post in single_post.subposts %}
+        <div class="col-12">
+            <h5 class="pl-4 pb-2"> {{ single_post.title }}</h5>
+            <div class="pb-4 post-grid">
                 <div>
-                    <b>{{ sub_post.user.username }}</b>
-                    {{ single_post.date | date() }}
+                    <b>{{ single_post.user.username }}</b> /
+                    {{ single_post.date|date('d') }} {{ mnths[single_post.date|date("n")] }} {{ single_post.date|date('Y') }}  {{ single_post.date|date('H:i') }}
                 </div>
                 <div>
-                    {{ sub_post.text }}
+                    {{ single_post.text | raw }}
+                </div>
+            </div>
+            {% for sub_post in single_post.subposts %}
+                <div class="pb-4 post-grid">
+                    <div>
+                        <b>{{ sub_post.user.username }}</b> /
+                        {{ sub_post.date|date('d') }} {{ mnths[sub_post.date|date("n")] }} {{ sub_post.date|date('Y') }}  {{ sub_post.date|date('H:i') }}
+                    </div>
+                    <div>
+                        {{ sub_post.text | raw }}
+                    </div>
                 </div>
             {% endfor %}
         </div>
     </div>
+    {% if is_granted("ROLE_USER") %}
+        <div class="pt-4">
+            {% set subpostForm = subpost_form.createView %}
+            {{ form_start(subpostForm, {'action' : path('app-add-subpost', {'id' : single_post.id})}) }}
+            {{ form_widget(subpostForm) }}
+            {{ form_end(subpostForm) }}
+        </div>
+    {% endif %}
 
-    <div class="pt-4">
-        {% set subpostForm = subpost_form.createView %}
-        {{ form_start(subpostForm, {'action' : path('app-add-subpost', {'id' : single_post.id})}) }}
-        {{ form_widget(subpostForm) }}
-        {{ form_end(subpostForm) }}
-    </div>
+
 
 {% endblock %}

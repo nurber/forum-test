@@ -1,3 +1,11 @@
 body {
     background: #ffffff;
 }
+
+.post-grid {
+    padding: 20px;
+}
+
+.post-grid:nth-child(2n) {
+    background: #f3f9ff;
+}

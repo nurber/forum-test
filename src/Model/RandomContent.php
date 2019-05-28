@@ -41,6 +41,6 @@ class RandomContent
     {
         $words = str_word_count(static::getRandomText(), 1);
         shuffle($words);
-        return implode(" ", array_slice($words, 0, 10));
+        return ucfirst(strtolower(implode(" ", array_slice($words, 0, 10))));
     }
 }

@@ -4,19 +4,16 @@
 
 {% block content %}
     <div class="row">
-        <div class="col-10">
+        <div class="col-12">
             {% for post in posts %}
 
-                <div class="pb-4">
+                <div class="pb-4 post-grid">
                     <div>
                         <a class="more-info"
                            href="{{ path('app_show_post',{'id': post.id}) }}">{{ post.title }}</a>
                     </div>
                     <div>
-                       <b>Автор:</b> {{ post.user.username }}
-                    </div>
-                    <div>
-                        <b>Ответов:</b> {{ post.getSubPostsCount }}
+                       <b>{{ post.user.username }}</b> / ответов: <b>{{ post.getSubPostsCount }}</b>
                     </div>
                 </div>
 
