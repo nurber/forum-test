@@ -9,7 +9,8 @@
 
                 <div class="pb-4">
                     <div>
-                        <b>{{ post.title }}</b>
+                        <a class="more-info"
+                           href="{{ path('app_show_post',{'id': post.id}) }}">{{ post.title }}</a>
                     </div>
                     <div>
                        <b>Автор:</b> {{ post.user.username }}
