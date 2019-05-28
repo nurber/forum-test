@@ -25,4 +25,11 @@
         </div>
     </div>
 
+    <div class="pt-4">
+        {% set subpostForm = subpost_form.createView %}
+        {{ form_start(subpostForm, {'action' : path('app-add-subpost', {'id' : single_post.id})}) }}
+        {{ form_widget(subpostForm) }}
+        {{ form_end(subpostForm) }}
+    </div>
+
 {% endblock %}

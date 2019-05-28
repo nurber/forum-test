@@ -3,7 +3,9 @@
 namespace App\Controller;
 
 use App\Entity\Post;
+use App\Entity\SubPost;
 use App\Form\PostType;
+use App\Form\SubPostType;
 use App\Repository\PostRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -19,9 +21,17 @@ class PostsController extends AbstractController
      */
     public function showPostAction(PostRepository $postRepository, int $id)
     {
+
+        $subpost = new SubPost();
+        $subpost_form = $this->createForm(SubPostType::class, $subpost, array(
+            'method' => 'POST'
+        ));
+
+
         $singlePost = $postRepository->find($id);
         return $this->render('posts/show_post.html.twig', [
-            'single_post' => $singlePost
+            'single_post' => $singlePost,
+            'subpost_form' => $subpost_form
         ]);
     }
 
