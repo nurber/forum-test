@@ -1,12 +1,13 @@
-FROM phpdockerio/php72-fpm:latest
-WORKDIR "/application"
+FROM php:7.1-fpm
+RUN apt-get update && apt-get install -y \
+    openssl \
+    git \
+    unzip
 
-# Install selected extensions and other stuff
-RUN apt-get update \
-    && apt-get -y --no-install-recommends install  php7.2-mysql \
-    && apt-get clean; rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/*
+# Install Composer
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
+&& composer --version
 
-# Install git
-RUN apt-get update \
-    && apt-get -y install git \
-    && apt-get clean; rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/*
+# Type docker-php-ext-install to see available extensions
+RUN docker-php-ext-install pdo pdo_mysql
+

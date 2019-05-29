@@ -1,17 +1,15 @@
-version: "3.7"
+version: "2.0"
 services:
 
     mysql:
-      image: mysql:5.7
+      image: mysql:5.7.23
+      command: --disable-partition-engine-check
       container_name: docker-symfony4-mysql
       working_dir: /application
       volumes:
         - .:/application
       environment:
         - MYSQL_ROOT_PASSWORD=root
-        - MYSQL_DATABASE=forum
-        - MYSQL_USER=root
-        - MYSQL_PASSWORD=root
       ports:
         - "8002:3306"
 
@@ -24,6 +22,8 @@ services:
           - ./phpdocker/nginx/nginx.conf:/etc/nginx/conf.d/default.conf
       ports:
        - "8000:80"
+      links:
+       - php-fpm
 
     php-fpm:
       build: phpdocker/php-fpm
@@ -32,4 +32,5 @@ services:
       volumes:
         - .:/application
         - ./phpdocker/php-fpm/php-ini-overrides.ini:/etc/php/7.2/fpm/conf.d/99-overrides.ini
-
+      links:
+       - mysql
