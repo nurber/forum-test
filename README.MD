@@ -1,18 +1,12 @@
 ## Запуск проекта:
 
-Устанавливаем необходимые зависимости.
-
-`sudo apt-get install php7.*-mysql php7.*-pdo`
-
 Поднимаем контейнер
 
 `docker-compose up`
 
-Создаем базу данных
+Заливаем базу данных
 
-`sudo chmod +x bin/start.sh`
-
-`bin/start.sh`
+`cat dump.sql | docker-compose exec -T docker-symfony4-mysql mysql -u root -proot forum`
 
 Заходим в браузере
 
