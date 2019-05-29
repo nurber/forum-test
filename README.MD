@@ -1,17 +1,18 @@
 ## Запуск проекта:
+
+Устанавливаем необходимые зависимости.
+
+`sudo apt-get install php7.*-mysql php7.*-pdo`
+
 Поднимаем контейнер
 
 `docker-compose up`
 
 Создаем базу данных
 
-`php bin/console doctrine:database:create`
+`sudo chmod +x bin/start.sh`
 
-`php bin/console doctrine:schema:create`
-
-Загрузка фикстур:
-
-`php bin/console doctrine:fixtures:load`
+`bin/start.sh`
 
 Заходим в браузере
 
